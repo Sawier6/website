@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontakt - Piotr Sawicki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
+  <style>
+    /* GLOBALNE USTAWIENIA */
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo img { height: 50px; }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-links a {
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-links a:hover { background: #000; color: #fff; }
+    .lang-btn {
+      cursor: pointer;
+      background: #000;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .lang-btn:hover { background: #333; }
+
+    /* KONTAKT */
+    .contact-section {
+      margin-top: 60px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .contact-section h1 { font-size: 2.5em; margin-bottom: 20px; }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      padding: 15px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover { background: #333; }
+
+    /* FOOTER */
+    footer.custom-footer {
+      position: relative;
+      color: #fff;
+      margin-top: 60px;
+      overflow: hidden;
+    }
+    .footer-parallax-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('footer-bg.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      padding: 80px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .footer-col { flex: 1 1 200px; }
+    .footer-col.contact { text-align: left; }
+    .footer-col.social { text-align: right; }
+    .footer-bottom { width: 100%; text-align: center; margin-top: 40px; opacity: 0.8; }
+    .social-links img {
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+      transition: transform 0.2s;
+    }
+    .social-links img:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="index.html"><img src="logo.png" alt="Logo" /></a>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" data-locale-key="home">Home</a>
+          <a href="cv.html" data-locale-key="cv">CV</a>
+          <a href="ai.html" data-locale-key="ai">AI</a>
+          <a href="contact.html" data-locale-key="contact">Kontakt</a>
+          <button class="lang-btn" id="langSwitch">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- KONTAKT -->
+  <section class="contact-section">
+    <div class="container">
+      <h1 data-locale-key="contactTitle">Kontakt</h1>
+      <form class="contact-form" action="mailto:piotr@motionfactor.pl" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Imię" required data-locale-key="contactNamePlaceholder" />
+        <input type="email" name="email" placeholder="Email" required data-locale-key="contactEmailPlaceholder" />
+        <textarea name="message" rows="5" placeholder="Wiadomość" required data-locale-key="contactMessagePlaceholder"></textarea>
+        <button type="submit" data-locale-key="contactButton">Wyślij wiadomość</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="custom-footer">
+    <div class="footer-parallax-bg"></div>
+    <div class="footer-content container">
+      <div class="footer-col contact">
+        <h3 data-locale-key="footerContactTitle">Kontakt</h3>
+        <p>piotr@motionfactor.pl</p>
+        <p>+48 500-535-480</p>
+      </div>
+      <div class="footer-col social">
+        <h3 data-locale-key="footerSocialTitle">Social</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/motionfactor/" target="_blank">
+            <img src="icons/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://www.linkedin.com/in/piotrsawicki-motion/" target="_blank">
+            <img src="icons/linkedin.svg" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-locale-key="footerText">© 2025 Piotr Sawicki. Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SKRYPT ZMIANY JĘZYKA -->
+  <script>
+    const translations = {
+      pl: {
+        home: "Home",
+        cv: "CV",
+        ai: "AI",
+        contact: "Kontakt",
+        contactTitle: "Kontakt",
+        contactNamePlaceholder: "Imię",
+        contactEmailPlaceholder: "Email",
+        contactMessagePlaceholder: "Wiadomość",
+        contactButton: "Wyślij wiadomość",
+        footerContactTitle: "Kontakt",
+        footerSocialTitle: "Social",
+        footerText: "© 2025 Piotr Sawicki. Wszelkie prawa zastrzeżone."
+      },
+      en: {
+        home: "Home",
+        cv: "CV",
+        ai: "AI",
+        contact: "Contact",
+        contactTitle: "Contact",
+        contactNamePlaceholder: "Name",
+        contactEmailPlaceholder: "Email",
+        contactMessagePlaceholder: "Message",
+        contactButton: "Send Message",
+        footerContactTitle: "Contact",
+        footerSocialTitle: "Social",
+        footerText: "© 2025 Piotr Sawicki. All rights reserved."
+      }
+    };
+    let currentLang = "pl";
+    const langSwitchBtn = document.getElementById("langSwitch");
+    langSwitchBtn.addEventListener("click", () => {
+      currentLang = currentLang === "pl" ? "en" : "pl";
+      langSwitchBtn.textContent = currentLang === "pl" ? "EN" : "PL";
+      document.querySelectorAll("[data-locale-key]").forEach(el => {
+        const key = el.getAttribute("data-locale-key");
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+          el.placeholder = translations[currentLang][key];
+        } else {
+          el.textContent = translations[currentLang][key];
+        }
+      });
+    });
+  </script>
+</body>
+</html>

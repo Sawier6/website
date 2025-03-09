@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV - Piotr Sawicki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
+  <style>
+    /* GLOBALNE USTAWIENIA */
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0; 
+      padding: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 999;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo img { height: 50px; }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .nav-links a {
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .nav-links a:hover { background: #000; color: #fff; }
+    .lang-btn {
+      cursor: pointer;
+      background: #000;
+      color: #fff;
+      padding: 5px 10px;
+      border: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .lang-btn:hover { background: #333; }
+
+    /* CV HEADER */
+    .cv-header {
+      margin-top: 60px;
+      text-align: center;
+      padding: 40px 20px;
+      background: #f9f9f9;
+    }
+    .cv-header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    .cv-header p { font-size: 1.2em; }
+
+    /* CV CONTENT */
+    .cv-content { padding: 40px 20px; }
+    .profile { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 40px; align-items: center; }
+    .profile img { max-width: 200px; border-radius: 50%; }
+    .profile-text { flex: 1; }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* TIMELINE */
+    .timeline { margin-bottom: 40px; }
+    .timeline-item {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-left: 4px solid #7E57C2;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .timeline-item:hover { transform: translateX(5px); }
+    .timeline-item h3 { margin: 0 0 10px; }
+
+    /* KLIENCI */
+    .clients { margin-bottom: 40px; }
+    .clients-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .clients-logos img { max-height: 60px; object-fit: contain; }
+
+    /* UMIEJĘTNOŚCI */
+    .skills { margin-bottom: 40px; }
+    .skill { margin-bottom: 20px; }
+    .skill-label { display: flex; align-items: center; justify-content: space-between; }
+    .skill-name { display: flex; align-items: center; }
+    .skill-name img { height: 20px; margin-right: 5px; }
+    .skill-bar {
+      background: #ddd;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    .skill-level {
+      height: 10px;
+      background: #000;
+      width: 0;
+      transition: width 1s ease-in-out;
+    }
+
+    /* FOOTER */
+    footer.custom-footer {
+      position: relative;
+      color: #fff;
+      margin-top: 60px;
+      overflow: hidden;
+    }
+    .footer-parallax-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('footer-bg.jpg') center/cover no-repeat;
+      background-attachment: fixed;
+      z-index: 0;
+    }
+    .footer-content {
+      position: relative;
+      z-index: 1;
+      padding: 80px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .footer-col { flex: 1 1 200px; }
+    .footer-col.contact { text-align: left; }
+    .footer-col.social { text-align: right; }
+    .footer-bottom {
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      opacity: 0.8;
+    }
+    .social-links img {
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+      transition: transform 0.2s;
+    }
+    .social-links img:hover { transform: scale(1.1); }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          <a href="index.html"><img src="logo.png" alt="Logo" /></a>
+        </div>
+        <div class="nav-links">
+          <a href="index.html" data-locale-key="home">Home</a>
+          <a href="cv.html" data-locale-key="cv">CV</a>
+          <a href="ai.html" data-locale-key="ai">AI</a>
+          <a href="contact.html" data-locale-key="contact">Kontakt</a>
+          <button class="lang-btn" id="langSwitch">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CV HEADER -->
+  <section class="cv-header">
+    <div class="container">
+      <h1 data-locale-key="cvTitle">CV - Piotr Sawicki</h1>
+      <p data-locale-key="cvSubtitle">Motion Designer z ponad 8-letnim doświadczeniem</p>
+    </div>
+  </section>
+
+  <!-- CV CONTENT -->
+  <section class="cv-content">
+    <div class="container">
+      <!-- PROFIL -->
+      <div class="profile animate-fade-in">
+        <img src="photo.jpg" alt="Zdjęcie profilowe" />
+        <div class="profile-text">
+          <h2 data-locale-key="aboutMeTitle">O mnie</h2>
+          <!-- Nowy tekst podzielony na 2 akapity -->
+          <p data-locale-key="aboutMeText1">
+            Cześć! Jestem 2D Motion Designerem z Warszawy, z ponad 8-letnim doświadczeniem. Uwielbiam wyzwania i nieustannie się rozwijam, aby tworzyć animacje, które naprawdę robią wrażenie. Pracowałem dla największych globalnych marek, a w pracy śledzę najnowsze trendy – w tym wykorzystanie AI i nowych technologii w produkcji wideo.
+          </p>
+          <p data-locale-key="aboutMeText2">
+            Specjalizuję się w animacjach 2D, explainer videos oraz reklamach telewizyjnych i internetowych. Formaty digitalowe nie są mi obce – tworzę reklamy na YouTube, Instagram i TikTok, a cały proces (od konceptu, przez storyboard, po finalną animację) mogę wykonać samodzielnie. Prywatnie pasjonuję się filmami, gotowaniem, podróżami i sportami ekstremalnymi.
+          </p>
+        </div>
+      </div>
+
+      <!-- DOŚWIADCZENIE -->
+      <div class="timeline animate-fade-in">
+        <h2 data-locale-key="experienceTitle">Doświadczenie zawodowe</h2>
+        <div class="timeline-item">
+          <h3>MicroStrategy</h3>
+          <p>01.2021 - obecnie</p>
+          <p data-locale-key="experienceText1">
+            Praca nad projektami dla globalnych marek, realizacja innowacyjnych animacji i kampanii reklamowych.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>Feeders Agency</h3>
+          <p>03.2020 - 01.2021</p>
+          <p data-locale-key="experienceText2">
+            Współpraca przy tworzeniu animacji dla wiodących marek, od konceptu po finalny produkt.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>Ringer Axel Springer</h3>
+          <p>03.2018 - 03.2020</p>
+          <p data-locale-key="experienceText3">
+            Realizacja animacji dla globalnych marek oraz rozwijanie kreatywnych kampanii reklamowych.
+          </p>
+        </div>
+      </div>
+
+      <!-- KLIENCI -->
+      <div class="clients animate-fade-in">
+        <h2 data-locale-key="clientsTitle">Klienci</h2>
+        <div class="clients-logos">
+          <img src="orlen.png" alt="Orlen" />
+          <img src="alpro.png" alt="Alpro" />
+          <img src="eobuwie.png" alt="eobuwie.pl" />
+          <img src="carrefour.png" alt="Carrefour" />
+          <img src="leroy.png" alt="Leroy Merlin" />
+          <img src="zywiec.png" alt="Żywiec" />
+        </div>
+      </div>
+
+      <!-- UMIEJĘTNOŚCI -->
+      <div class="skills animate-fade-in">
+        <h2 data-locale-key="skillsTitle">Umiejętności</h2>
+        <div class="skill">
+          <div class="skill-label">
+            <div class="skill-name">
+              <img src="icons/after.svg" alt="After Effects" />
+              <span>After Effects</span>
+            </div>
+            <span>95%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-level" style="width: 95%;"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-label">
+            <div class="skill-name">
+              <img src="icons/illustrator.svg" alt="Illustrator" />
+              <span>Illustrator</span>
+            </div>
+            <span>70%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-level" style="width: 70%;"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-label">
+            <div class="skill-name">
+              <img src="icons/premiere.svg" alt="Premiere Pro" />
+              <span>Premiere Pro</span>
+            </div>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-level" style="width: 85%;"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-label">
+            <div class="skill-name">
+              <img src="icons/photoshop.svg" alt="Photoshop" />
+              <span>Photoshop</span>
+            </div>
+            <span>70%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-level" style="width: 70%;"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-label">
+            <div class="skill-name">
+              <img src="icons/figma_logo.svg" alt="Figma" />
+              <span>Figma</span>
+            </div>
+            <span>50%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-level" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="custom-footer">
+    <div class="footer-parallax-bg"></div>
+    <div class="footer-content container">
+      <div class="footer-col contact">
+        <h3 data-locale-key="footerContactTitle">Kontakt</h3>
+        <p>piotr@motionfactor.pl</p>
+        <p>+48 500-535-480</p>
+      </div>
+      <div class="footer-col social">
+        <h3 data-locale-key="footerSocialTitle">Social</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/motionfactor/" target="_blank">
+            <img src="icons/instagram.svg" alt="Instagram">
+          </a>
+          <a href="https://www.linkedin.com/in/piotrsawicki-motion/" target="_blank">
+            <img src="icons/linkedin.svg" alt="LinkedIn">
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-locale-key="footerText">© 2025 Piotr Sawicki. Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SKRYPT ZMIANY JĘZYKA -->
+  <script>
+    const translations = {
+      pl: {
+        home: "Home",
+        cv: "CV",
+        ai: "AI",
+        contact: "Kontakt",
+        cvTitle: "CV - Piotr Sawicki",
+        cvSubtitle: "Motion Designer z ponad 8-letnim doświadczeniem",
+        aboutMeTitle: "O mnie",
+        /* NOWE TEKSTY O MNIE (2 akapity) */
+        aboutMeText1: "Cześć! Jestem 2D Motion Designerem z Warszawy, z ponad 8-letnim doświadczeniem. Uwielbiam wyzwania i nieustannie się rozwijam, aby tworzyć animacje, które naprawdę robią wrażenie. Pracowałem dla największych globalnych marek, a w pracy śledzę najnowsze trendy – w tym wykorzystanie AI i nowych technologii w produkcji wideo.",
+        aboutMeText2: "Specjalizuję się w animacjach 2D, explainer videos oraz reklamach telewizyjnych i internetowych. Formaty digitalowe nie są mi obce – tworzę reklamy na YouTube, Instagram i TikTok, a cały proces (od konceptu, przez storyboard, po finalną animację) mogę wykonać samodzielnie. Prywatnie pasjonuję się filmami, gotowaniem, podróżami i sportami ekstremalnymi.",
+        experienceTitle: "Doświadczenie zawodowe",
+        experienceText1: "Praca nad projektami dla globalnych marek, realizacja innowacyjnych animacji i kampanii reklamowych.",
+        experienceText2: "Współpraca przy tworzeniu animacji dla wiodących marek, od konceptu po finalny produkt.",
+        experienceText3: "Realizacja animacji dla globalnych marek oraz rozwijanie kreatywnych kampanii reklamowych.",
+        clientsTitle: "Klienci",
+        skillsTitle: "Umiejętności",
+        footerContactTitle: "Kontakt",
+        footerSocialTitle: "Social",
+        footerText: "© 2025 Piotr Sawicki. Wszelkie prawa zastrzeżone."
+      },
+      en: {
+        home: "Home",
+        cv: "CV",
+        ai: "AI",
+        contact: "Contact",
+        cvTitle: "CV - Piotr Sawicki",
+        cvSubtitle: "Motion Designer with over 8 years of experience",
+        aboutMeTitle: "About me",
+        /* PRZYKŁADOWE TŁUMACZENIE */
+        aboutMeText1: "Hi! I'm a 2D Motion Designer from Warsaw with over 8 years of experience. I love challenges and constantly grow my skills to create truly impressive animations. I've worked for top global brands and stay up-to-date with the latest trends – including AI and new technologies in video production.",
+        aboutMeText2: "I specialize in 2D animation, explainer videos, and both TV and online ads. I'm comfortable with digital formats, creating content for YouTube, Instagram, and TikTok. I can handle the entire process – from concept and storyboard to the final animation. In my free time, I'm passionate about movies, cooking, traveling, and extreme sports.",
+        experienceTitle: "Professional Experience",
+        experienceText1: "Working on projects for global brands, delivering innovative animations and ad campaigns.",
+        experienceText2: "Collaborated on creating animations for leading brands, from concept to final product.",
+        experienceText3: "Produced animations for global brands and developed creative advertising campaigns.",
+        clientsTitle: "Clients",
+        skillsTitle: "Skills",
+        footerContactTitle: "Contact",
+        footerSocialTitle: "Social",
+        footerText: "© 2025 Piotr Sawicki. All rights reserved."
+      }
+    };
+
+    let currentLang = "pl";
+    const langSwitchBtn = document.getElementById("langSwitch");
+    langSwitchBtn.addEventListener("click", () => {
+      currentLang = currentLang === "pl" ? "en" : "pl";
+      langSwitchBtn.textContent = currentLang === "pl" ? "EN" : "PL";
+
+      document.querySelectorAll("[data-locale-key]").forEach(el => {
+        const key = el.getAttribute("data-locale-key");
+        // Jeśli to input/textarea, aktualizujemy placeholder
+        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+          el.placeholder = translations[currentLang][key];
+        } else {
+          // W innym wypadku ustawiamy textContent
+          el.textContent = translations[currentLang][key];
+        }
+      });
+    });
+  </script>
+</body>
+</html>
